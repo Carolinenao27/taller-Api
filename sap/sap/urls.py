@@ -20,6 +20,8 @@ from django.urls import path
 from docentes.views import agregar_docente, ver_docente, editar_docente, eliminar_docente
 from webapp.views import mostrar_docentes
 
+from sap.docentes.views import generar_reporte
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mostrar_docentes, name= 'inicio'),
@@ -27,6 +29,7 @@ urlpatterns = [
     path('ver_docente/<int:idDocente>', ver_docente),
     path('editar_docente/<int:idDocente>', editar_docente),
     path('eliminar_docente/<int:idDocente>', eliminar_docente),
+    path('generar_reporte/', generar_reporte),
 
 ]
 
