@@ -17,10 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from docentes.views import agregar_docente, ver_docente, editar_docente, eliminar_docente
-from webapp.views import mostrar_docentes
+from docentes.views import agregar_docente, ver_docente, editar_docente, eliminar_docente, generar_reporte
 
-from sap.docentes.views import generar_reporte
+from webapp.views import mostrar_docentes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +29,5 @@ urlpatterns = [
     path('editar_docente/<int:idDocente>', editar_docente),
     path('eliminar_docente/<int:idDocente>', eliminar_docente),
     path('generar_reporte/', generar_reporte),
-
 ]
 
