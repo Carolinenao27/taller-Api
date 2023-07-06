@@ -4,9 +4,9 @@ from django.http import HttpResponse
 from django.template import loader
 from openpyxl.workbook import Workbook
 
-
 from docentes.forms import DocenteFormulario
 from docentes.models import Docente
+
 
 # Create your views here.
 
@@ -76,7 +76,7 @@ def generar_reporte(request):
         ws.cell(row=cont, column=2).value = docente.nombre
         ws.cell(row=cont, column=3).value = docente.apellido
         ws.cell(row=cont, column=4).value = docente.email
-        ws.cell(row=cont, column=5).value = docente.materia
+        ws.cell(row=cont, column=5).value = docente.materia.nombre
         cont = cont + 1
     # Establecemos el nombre del archivo
     nombre_archivo = "ReporteDocentesExcel.xlsx"
