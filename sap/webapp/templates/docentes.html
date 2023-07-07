@@ -26,8 +26,11 @@
         <th >Id</th>
         <th >Nombre</th>
         <th >Apellido</th>
+        <th >Sexo</th>
         <th >Email</th>
         <th >Materia</th>
+        <th >Universidad</th>
+        <th >Jornada</th>
         <th ></th>
         <th ></th>
         <th ></th>
@@ -38,8 +41,11 @@
              <td>{{docente.id}}</td>
              <td>{{docente.nombre}}</td>
              <td>{{docente.apellido}}</td>
+             <td>{% if docente.sexo == 'F' %} Femenino {% endif %} {% if docente.sexo == 'M' %}Masculino {% endif %}</td>
              <td>{{docente.email}}</td>
              <td>{{docente.materia.nombre}}</td>
+             <td>{{docente.universidad.nombre}}</td>
+             <td>{% if docente.jornada == 'M' %} Matutino {% endif %} {% if docente.jornada == 'V' %}Vespertino {% endif %} {% if docente.jornada == 'N' %}Nocturno {% endif %}</td>
              <td><a class="btn btn-warning" href="ver_docente/{{docente.id}}"><i class="fa-solid fa-eye"></i></a></td>
              <td><a class="btn btn-success" href="editar_docente/{{docente.id}}"><i class="fa-solid fa-pencil"></i></a></td>
              <td><a class="btn btn-danger" href="eliminar_docente/{{docente.id}}"><i class="fa-solid fa-eraser"></i></a></td>

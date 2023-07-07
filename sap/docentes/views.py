@@ -64,19 +64,26 @@ def generar_reporte(request):
     # En la celda B1 ponemos el texto 'REPORTE DE DOCENTES'
     ws['B1'] = 'REPORTE DE DOCENTES'
     # Juntamos las celdas desde la B1 hasta la E1, formando una sola celda
-    ws.merge_cells('B1:E1')
+    ws.merge_cells('B1:H1')
     # Creamos los encabezados desde la celda B3 hasta la E3
     ws['B3'] = 'NOMBRE'
     ws['C3'] = 'APELLIDO'
-    ws['D3'] = 'EMAIL'
-    ws['E3'] = 'MATERIA'
+    ws['D3'] = 'SEXO'
+    ws['E3'] = 'EMAIL'
+    ws['F3'] = 'MATERIA'
+    ws['G3'] = 'UNIVERSIDAD'
+    ws['H3'] = 'JORNADA'
+
     cont = 4
     # Recorremos el conjunto de personas y vamos escribiendo cada uno de los datos en las celdas
     for docente in docentes:
         ws.cell(row=cont, column=2).value = docente.nombre
         ws.cell(row=cont, column=3).value = docente.apellido
-        ws.cell(row=cont, column=4).value = docente.email
-        ws.cell(row=cont, column=5).value = docente.materia.nombre
+        ws.cell(row=cont, column=4).value = docente.sexo
+        ws.cell(row=cont, column=5).value = docente.email
+        ws.cell(row=cont, column=6).value = docente.materia.nombre
+        ws.cell(row=cont, column=7).value = docente.universidad.nombre
+        ws.cell(row=cont, column=8).value = docente.jornada
         cont = cont + 1
     # Establecemos el nombre del archivo
     nombre_archivo = "ReporteDocentesExcel.xlsx"

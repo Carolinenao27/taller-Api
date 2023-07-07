@@ -24,8 +24,11 @@
 
         <th >Nombre</th>
         <th >Apellido</th>
+        <th >Sexo</th>
         <th >Email</th>
         <th >Materia</th>
+        <th >Universidad</th>
+        <th >Jornada</th>
         <th ></th>
 
     </tr>
@@ -34,8 +37,11 @@
          <tr>
              <td>{{docente.nombre}}</td>
              <td>{{docente.apellido}}</td>
+             <td>{% if docente.sexo == 'F' %} Femenino {% endif %} {% if docente.sexo == 'M' %}Masculino {% endif %}</td>
              <td>{{docente.email}}</td>
              <td>{{docente.materia.nombre}}</td>
+             <td>{{docente.universidad.nombre}}</td>
+             <td>{% if docente.jornada == 'M' %} Matutino {% endif %} {% if docente.jornada == 'V' %}Vespertino {% endif %} {% if docente.jornada == 'N' %}Nocturno</td>
 
          </tr>
 
