@@ -3,9 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from openpyxl.workbook import Workbook
+from rest_framework import viewsets, permissions
 
 from docentes.forms import DocenteFormulario
-from docentes.models import Docente
+from docentes.models import Docente, Materia
+from docentes.serializers import DocenteSerializer, MateriaSerializer
 
 
 # Create your views here.
@@ -93,3 +95,18 @@ def generar_reporte(request):
     response["Content-Disposition"] = contenido
     wb.save(response)
     return response
+
+class MateriaViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Materia.objects.all().order_by('nombre')
+    serializer_class = MateriaSerializer
+    permission_classes = [permissions.IsAuthenticated]
+class DocenteViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Docente.objects.all().order_by('apellido')
+    serializer_class = DocenteSerializer
+    permission_classes = [permissions.IsAuthenticated]
